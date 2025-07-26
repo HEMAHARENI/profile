@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemahareni A.R. - Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(200px); opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #00d4ff); }
+            to { filter: drop-shadow(0 0 30px #00d4ff); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #00d4ff;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #00d4ff;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #fff;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, #00d4ff, transparent);
+            animation: rotate 3s linear infinite;
+        }
+
+        .about-image::after {
+            content: '👨‍💻';
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            border-radius: 50%;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .about-text {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 120px;
+        }
+
+        .skill-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        /* Custom skill icons */
+        .skill-icon.html { color: #e34c26; }
+        .skill-icon.css { color: #1572b6; }
+        .skill-icon.java { color: #f89820; }
+        .skill-icon.cpp { color: #00599c; }
+        .skill-icon.dsa { color: #ff6b6b; }
+        .skill-icon.ml { color: #ff9500; }
+        .skill-icon.cv { color: #5c85d6; }
+        .skill-icon.robotics { color: #00d4ff; }
+        .skill-icon.logic { color: #a855f7; }
+        .skill-icon.web { color: #61dafb; }
+        .skill-icon.data { color: #3776ab; }
+        .skill-icon.problem { color: #4caf50; }
+        .skill-icon.leadership { color: #ffc107; }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-left: 15px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-radius: 4px;
+            width: 0;
+            transition: width 2s ease-out;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-link:hover {
+            color: #fff;
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        /* Project Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: rgba(26, 26, 46, 0.95);
+            margin: 50px auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .modal-header {
+            position: relative;
+            padding: 30px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .close {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #00d4ff;
+            transform: scale(1.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-title {
+            color: #00d4ff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .modal-features {
+            margin-bottom: 30px;
+        }
+
+        .modal-features h4 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-features li {
+            color: #ccc;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .modal-features li::before {
+            content: '▸';
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            transition: all 0.3s ease;
+        }
+
+        .modal-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .modal-link.secondary {
+            background: transparent;
+            border: 2px solid #00d4ff;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #00d4ff;
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #00d4ff;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            .modal-content {
+                margin: 20px auto;
+                width: 95%;
+            }
+            
+            .modal-header,
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                Hema<span style="color: #ffffff;">Hareni</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hemahareni A.R.</h1>
+            <p>B.Tech(AI and Robotics) Student & Aspiring Tech Innovator</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="#contact" class="cta-button secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <h3>Passionate Developer & AI Enthusiast</h3>
+                <p>I'm an aspiring tech innovator pursuing a B.Tech in Computer Science with a focus on Artificial Intelligence and Robotics. At the intersection of curiosity and technology, I'm building my programming foundation while dreaming up intelligent systems that solve tomorrow's challenges.</p>
+                <p>Passionate about exploring the synergy between AI and robotics, I thrive on learning, experimenting, and bringing ideas to life in this dynamic field. Currently in my 4th semester with a CGPA of 7.74, I'm actively seeking opportunities to apply my skills in real-world projects.</p>
+                <p>My goal is to contribute to cutting-edge technology that makes a meaningful impact on society while continuously growing as a developer and innovator.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon html">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon java">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <span>Java</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon cpp">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span>C++</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon dsa">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <span>DSA</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>AI & Robotics</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon ml">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span>Machine Learning</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="70%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon cv">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <span>Computer Vision</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="65%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon robotics">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <span>Robotics Systems</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="60%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon logic">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <span>Logical Solving</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Development & Tools</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon web">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span>Web Development</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon data">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <span>Data Preprocessing</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="70%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon problem">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span>Problem Solving</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="88%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon leadership">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span>Team Leadership</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal('weather-modal')">
+                <div class="project-image">
+                     <img src="images/weather.jpg" alt="ROS2 Project"> 
+                </div>
+                <div class="project-content">
+                    <h3>Weather Monitoring WebPage using API</h3>
+                    <p>Dynamic web-based weather monitoring system using OpenWeatherMap API. Features include location-based weather information, interactive visualizations with HTML, CSS, and JavaScript.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">API</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link">
+                            <i class="fas fa-eye"></i> View Details
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" onclick="openModal('ros-modal')">
+                <div class="project-image">
+                     <img src="images/ros2.jpeg" alt="ROS2 Project"> 
+                </div>
+                <div class="project-content">
+                    <h3>Obstacle Avoidance using ROS2 and Gazebo</h3>
+                    <p>Autonomous navigation system demonstrating robotics navigation and obstacle avoidance in robot arm simulation. Advanced algorithms for dynamic environment navigation.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ROS2</span>
+                        <span class="tech-tag">Gazebo</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Robotics</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link">
+                            <i class="fas fa-eye"></i> View Details
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" onclick="openModal('support-modal')">
+                <div class="project-image">
+                     <img src="images/rtab.jpeg" alt="ROS2 Project">
+                </div>
+                <div class="project-content">
+                    <h3>ROS2 SLAM using RTAB-Map</h3>
+                    <p>Advanced mobile robotics project implementing SLAM using RTAB-Map in ROS2 framework. Integrates depth camera, odometry, and IMU for real-time 3D mapping and localization.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ROS2</span>
+                        <span class="tech-tag">RTAB-Map</span>
+                        <span class="tech-tag">SLAM</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link">
+                            <i class="fas fa-eye"></i> View Details
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" onclick="openModal('jarvis-modal')">
+                <div class="project-image">
+                    <img src="images/jarvis.jpg" alt="JARVIS AI Assistant">
+                </div>
+                <div class="project-content">
+                    <h3>Personal AI Assistant (JARVIS)</h3>
+                    <p>Personal AI voice assistant that can be controlled by hand movements and responding to instructions integrated with ChatGPT using voice as the primary interface.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Voice Recognition</span>
+                        <span class="tech-tag">ChatGPT</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link">
+                            <i class="fas fa-eye"></i> View Details
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" onclick="openModal('autonomous-modal')">
+                <div class="project-image">
+                    <img src="images/autonomous-vehicle.jpeg" alt="Autonomous Vehicle System">
+
+                </div>
+                <div class="project-content">
+                    <h3>Autonomous Vehicle Response System</h3>
+                    <p>Developed an AI-driven system enabling autonomous driving in closed and required stopping distances using sensor fusion and OA communication. Implemented lane-based detection for tracking objects.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Sensor Fusion</span>
+                        <span class="tech-tag">Object Detection</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link">
+                            <i class="fas fa-eye"></i> View Details
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Let's Connect</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 style="color: #00d4ff; margin-bottom: 30px;">Get In Touch</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:hemahareniar212@gmail.com">hemahareniar212@gmail.com</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+917305093588">+91 7305093588</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/hemahareni-a-r-184882322/" target="_blank">linkedin.com/in/hemahareni</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/HEMAHARENI" target="_blank">github.com/hemahareni</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Chennai, India</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Vellore Institute of Technology</span>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    
+    <!-- Weather Project Modal -->
+    <div id="weather-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('weather-modal')">&times;</span>
+                <h2 class="modal-title">Weather Monitoring WebPage using API</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="images/weather.jpg" alt="ROS2 Project"> 
+
+                </div>
+                <div class="modal-description">
+                    <p>A comprehensive weather monitoring web application that provides real-time weather information using the OpenWeatherMap API. The application features an intuitive user interface with interactive visualizations, location-based weather data, and responsive design for optimal user experience across all devices.</p>
+                    
+                    <p>This project demonstrates proficiency in API integration, asynchronous JavaScript programming, and modern web development practices. The application includes features such as current weather conditions, 5-day forecasts, weather maps, and location search functionality.</p>
+                </div>
+                
+                <div class="modal-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Real-time weather data integration using OpenWeatherMap API</li>
+                        <li>Location-based weather information with GPS integration</li>
+                        <li>Interactive weather visualizations and charts</li>
+                        <li>Responsive design optimized for mobile and desktop</li>
+                        <li>Search functionality for global weather data</li>
+                        <li>Weather maps with temperature, precipitation, and wind layers</li>
+                        <li>Local storage for favorite locations</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech" style="margin-bottom: 30px;">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript </span>
+                    <span class="tech-tag">OpenWeatherMap API</span>
+                    <span class="tech-tag">Responsive Design</span>
+                </div>
+                
+                <div class="modal-links">
+                    <a href="https://github.com/Sairam0207/Climate-monitoring" class="modal-link secondary">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROS2 Project Modal -->
+    <div id="ros-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('ros-modal')">&times;</span>
+                <h2 class="modal-title">Obstacle Avoidance using ROS2 and Gazebo</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                     <img src="images/ros2.jpeg" alt="ROS2 Project"> 
+                </div>
+                <div class="modal-description">
+                    <p>An advanced autonomous navigation system built using ROS2 (Robot Operating System 2) and Gazebo simulation environment. This project demonstrates sophisticated robotics algorithms for obstacle detection, path planning, and autonomous navigation in complex environments.</p>
+                    
+                    <p>The system implements multiple layers of safety and efficiency algorithms, including real-time sensor data processing, dynamic path replanning, and collision avoidance mechanisms. The project showcases practical applications of robotics in autonomous systems and intelligent navigation.</p>
+                </div>
+                
+                <div class="modal-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Real-time obstacle detection using LiDAR and camera sensors</li>
+                        <li>Dynamic path planning </li>
+                        <li>Multi-sensor fusion for enhanced perception</li>
+                        <li>Gazebo simulation environment with realistic physics</li>
+                        <li>ROS2 node architecture for modular development</li>
+                        <li>Real-time visualization using RViz2</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech" style="margin-bottom: 30px;">
+                    <span class="tech-tag">ROS2 Humble</span>
+                    <span class="tech-tag">Gazebo</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SLAM</span>
+                </div>
+                
+                    <div class="modal-links">
+                        <a href="#" class="modal-link" onclick="playDemoVideo()">
+                            <i class="fas fa-play"></i> Watch Demo
+                        </a>
+                    </div>
+
+                    <video id="demoVideo" width="100%" controls style="border-radius: 10px; margin-top: 20px; display: none;">
+                        <source src="images/demo1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ROS2 SLAM Modal -->
+    <div id="support-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('support-modal')">&times;</span>
+                <h2 class="modal-title">ROS2 SLAM using RTAB-Map</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                     <img src="images/rtab1.jpg" alt="ROS2 SLAM System"> 
+                </div>
+                <div class="modal-description">
+                    <p>An advanced mobile robotics project implementing Simultaneous Localization and Mapping (SLAM) using RTAB-Map within the ROS2 framework. This sophisticated system integrates multiple sensors including depth cameras, odometry, and IMU to create real-time 3D maps while simultaneously tracking the robot's position in unknown environments.</p>
+                    
+                    <p>The project demonstrates cutting-edge robotics navigation capabilities with sensor fusion techniques, real-time data processing, and advanced mapping algorithms. The system utilizes an Arducam Time-of-Flight (TOF) camera for precise depth data acquisition and UDP communication protocols for efficient data transmission between the robot and processing unit.</p>
+                    
+                    <p>This implementation showcases practical applications of SLAM technology in autonomous navigation, with potential applications in service robotics,  and exploration systems. The project is currently in final stages with localization improvements showing promising results.</p>
+                </div>
+                
+                <div class="modal-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Real-time 3D mapping using RTAB-Map algorithm</li>
+                        <li>Multi-sensor fusion (Depth Camera, Odometry, IMU)</li>
+                        <li>Arducam TOF camera integration for accurate depth perception</li>
+                        <li>UDP communication protocol for efficient data transmission</li>
+                        <li>Real-time depth data conversion to uint16 format for RTAB compatibility</li>
+                        <li>ROS2 topic-based architecture for modular sensor integration</li>
+                        <li>Simultaneous localization and mapping in unknown environments</li>
+                        <li>RGB-D data processing for enhanced visual mapping</li>
+                        <li>Loop closure detection for map consistency</li>
+                        <li>Real-time visualization and monitoring capabilities</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-features">
+                    <h4>Technical Implementation:</h4>
+                    <ul>
+                        <li><strong>Sensor Integration:</strong> Combined IMU, odometry, depth, and RGB data streams</li>
+                        <li><strong>Data Processing:</strong> Real-time conversion of depth data to RTAB-Map requirements</li>
+                        <li><strong>Communication:</strong> UDP port communication for camera data transmission</li>
+                        <li><strong>Mapping Algorithm:</strong> RTAB-Map for robust 3D environment reconstruction</li>
+                        <li><strong>Framework:</strong> ROS2 ecosystem for distributed robotics applications</li>
+                        <li><strong>Visualization:</strong> Real-time 3D map visualization and robot tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-features">
+                    <h4>Project Status & Results:</h4>
+                    <ul>
+                        <li>Successfully integrated multiple sensor modalities for comprehensive mapping</li>
+                        <li>Achieved real-time depth data processing and transmission</li>
+                        <li>Implemented robust sensor fusion algorithms</li>
+                        <li>Generated initial 3D mapping results with RTAB-Map integration</li>
+                        <li>Currently finalizing localization improvements with enhanced accuracy</li>
+                        <li>Final testing phase showing significantly improved mapping precision</li>
+                        <li>Documentation and video demonstrations available upon project completion</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech" style="margin-bottom: 30px;">
+                    <span class="tech-tag">ROS2</span>
+                    <span class="tech-tag">RTAB-Map</span>
+                    <span class="tech-tag">SLAM</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">Sensor Fusion</span>
+                    <span class="tech-tag">Python</span>                    
+                    <span class="tech-tag">PCL</span>
+                    <span class="tech-tag">UDP Protocol</span>
+                    <span class="tech-tag">Arducam TOF</span>
+                    <span class="tech-tag">3D Mapping</span>
+                </div>
+                
+        <div class="modal-links" style="margin-bottom: 20px;">
+                <a href="#" class="modal-link" onclick="showDemo()">
+                    <i class="fas fa-play"></i> Watch Demo
+                </a>
+            </div>
+
+            <!-- Hidden Demo Section -->
+            <div id="demoContent" style="display: none; margin-top: 20px;">
+                <!-- Description -->
+                <p style="font-size: 16px; margin-bottom: 15px;">
+                    This demo showcases 3D SLAM using RTAB-Map in ROS2 with data from Arducam TOF, fused via sensor fusion algorithms.
+                </p>
+
+                <!-- Video -->
+                <video width="100%" controls style="border-radius: 10px; margin-bottom: 15px;">
+                    <source src="images/rtab.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video width="100%" controls style="border-radius: 10px; margin-bottom: 15px;">
+                    <source src="images/rtab1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- Image -->
+                <img src="images/rtab.jpeg" alt="3D Mapping Screenshot" style="width: 100%; border-radius: 10px;">
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JARVIS Modal -->
+    <div id="jarvis-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('jarvis-modal')">&times;</span>
+                <h2 class="modal-title">Personal AI Assistant (JARVIS)</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    
+                    <img src="images/jarvis.jpg" alt="JARVIS AI Assistant">
+                </div>
+                <div class="modal-description">
+                    <p>An advanced personal AI assistant inspired by JARVIS from Iron Man, featuring voice recognition for intelligent conversations. This multi-modal interface combines computer vision, natural language processing, and voice synthesis to create an immersive AI experience.</p>
+                    
+                    <p>The system demonstrates cutting-edge AI integration techniques, real-time processing capabilities, and innovative human-computer interaction methods. It serves as a personal productivity assistant with advanced AI capabilities.</p>
+                </div>
+                
+                <div class="modal-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Advanced voice recognition and natural language processing</li>
+                        <li>Real-time speech-to-text and text-to-speech conversion</li>
+                        <li>Personalized responses and learning capabilities</li>
+                        <li>Task automation and scheduling features</li>
+                        <li>Smart home integration possibilities</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech" style="margin-bottom: 30px;">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">SpeechRecognition</span>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Autonomous Vehicle Modal -->
+    <div id="autonomous-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('autonomous-modal')">&times;</span>
+                <h2 class="modal-title">Autonomous Vehicle Response System</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="images/autonomous-vehicle.jpeg" alt="Autonomous Vehicle System">
+
+                    <!-- Replace with actual project image: <img src="path/to/autonomous-vehicle.jpg" alt="Autonomous Vehicle System"> -->
+                </div>
+                <div class="modal-description">
+                    <p>A sophisticated autonomous vehicle system that enables self-driving capabilities in controlled environments. The system incorporates advanced sensor fusion techniques, machine learning algorithms for object detection, and real-time decision-making protocols for safe autonomous navigation.</p>
+                    
+                    <p>This project demonstrates practical applications of AI in automotive technology, featuring lane detection, obstacle recognition, and adaptive cruise control systems. The implementation focuses on safety-critical applications and real-time performance optimization.</p>
+                </div>
+                
+                
+                
+                <div class="project-tech" style="margin-bottom: 30px;">
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">YOLO</span>
+                    <span class="tech-tag">Sensor Fusion</span>
+                </div>
+                
+                <div class="modal-links">
+                    <a href="https://github.com/HEMAHARENI/hemaa-projects/tree/main/ambulance-detection-main" class="modal-link secondary">
+                        <i class="fab fa-github"></i> View 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Particle Background Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Navbar Scroll Effect
+        function updateOnScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Parallax effect
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            const particles = document.getElementById('particles');
+            
+            if (heroContent && scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            if (particles && scrolled < window.innerHeight) {
+                particles.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        }
+
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Skill Bar Animation
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    
+                    // Animate skill bars when skills section is visible
+                    if (entry.target.id === 'skills') {
+                        setTimeout(() => {
+                            animateSkillBars();
+                        }, 500);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form Submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent! ✓';
+                submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0099cc)';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Project Card Hover Effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const mouseX = e.clientX - centerX;
+                const mouseY = e.clientY - centerY;
+                
+                const rotateX = (mouseY / rect.height) * 10;
+                const rotateY = (mouseX / rect.width) * -10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+            });
+        });
+
+        // Initialize
+        createParticles();
+        
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 1s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // ESC key closes modals
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+        function playDemoVideo() {
+        const video = document.getElementById('demoVideo');
+        video.style.display = 'block';
+        video.play();
+    }
+    function showDemo() {
+        const content = document.getElementById('demoContent');
+        content.style.display = 'block';
+    }
+    </script>
+</body>
+</html>
